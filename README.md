@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FullStackApp
+
+A full-stack web application built with [Next.js](https://nextjs.org), MongoDB, and NextAuth.js for authentication. Users can register, log in with credentials, Google, or GitHub, and create posts with images (from URL or local upload). The app supports secure authentication, CRUD operations for posts, and image uploads.
+
+---
+
+## Features
+
+- **User Authentication**
+  - Sign up and log in with email/password
+  - OAuth login with Google and GitHub
+- **Dashboard**
+  - View, create, and delete posts
+  - Each post includes a title, description, content, and image
+- **Image Support**
+  - Add images via URL or upload from local storage
+- **Responsive UI**
+  - Clean, modern interface with styled components
+- **Secure**
+  - Passwords are hashed
+  - Environment variables for sensitive data
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/fullstackapp.git
+cd fullstackapp
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### 3. Set Up Environment Variables
+
+Create a `.env` file in the root directory and add the following:
+
+```env
+MONGODB_URI=your-mongodb-connection-string
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+GITHUB_ID=your-github-client-id
+GITHUB_SECRET=your-github-client-secret
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your-random-secret
+```
+
+### 4. Run the Development Server
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
+
+- **Register**: Create a new account or use Google/GitHub to sign in.
+- **Login**: Access your dashboard after authentication.
+- **Create Post**: Fill in the form, add an image (URL or upload), and submit.
+- **Delete Post**: Remove posts from your dashboard.
+
+---
+
+## Project Structure
+
+```
+src/
+  app/
+    api/           # API routes (auth, posts)
+    dashboard/     # Dashboard pages and components
+    models/        # Mongoose models (User, Post)
+    utils/         # Utility functions (DB connection)
+  styles/          # CSS modules
+public/            # Static assets
+```
+
+---
+
+## Image Upload
+
+- You can add an image to your post by providing a URL or uploading from your device.
+- Uploaded images are stored and served so they display correctly even after deployment.
+
+---
+
+## Deployment
+
+Deploy easily on [Vercel](https://vercel.com/) or any platform that supports Next.js.
+
+---
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [NextAuth.js Documentation](https://next-auth.js.org/)
+- [MongoDB Documentation](https://docs.mongodb.com/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License.
