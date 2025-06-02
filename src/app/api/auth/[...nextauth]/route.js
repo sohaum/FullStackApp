@@ -35,6 +35,7 @@ const handler = NextAuth({
             throw new Error("User not found!");
           }
         } catch (err) {
+          console.error("Error during authorization:", err);
           throw new Error(err);
         }
       },

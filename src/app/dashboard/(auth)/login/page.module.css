@@ -68,3 +68,21 @@
 .google:hover {
   background-color: rgba(228, 97, 50, 0.803);
 }
+
+.github {
+  background-color: rgba(228, 97, 50, 0.72);
+}
+
+.github:hover {
+  background-color: rgba(228, 97, 50, 0.803);
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.success {
+  color: green;
+  margin-top: 10px;
+}

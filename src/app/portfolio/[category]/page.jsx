@@ -16,8 +16,8 @@ const getData = (cat) => {
 const Category = async ({ params }) => {
   const awaitedParams = await params;
   const data = await getData(awaitedParams.category);
-  console.log('Category:', awaitedParams.category); // Debugging log
-  console.log('Data:', data); // Debugging log
+  // console.log('Category:', awaitedParams.category); // Debugging log
+  // console.log('Data:', data); // Debugging log
 
   return (
     <div className={styles.container}>

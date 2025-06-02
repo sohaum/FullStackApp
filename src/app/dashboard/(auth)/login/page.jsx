@@ -13,18 +13,21 @@ const Login = ({ url }) => {
   const [success, setSuccess] = useState("");
 
   useEffect(() => {
-    setError(params.get("error"));
-    setSuccess(params.get("success"));
+    const errorParam = params.get("error") || "";
+    const successParam = params.get("success") || "";
+    setError(errorParam);
+    setSuccess(successParam);
   }, [params]);
+
+  useEffect(() => {
+    if (session.status === "authenticated") {
+      router.push("/dashboard");
+    }
+  }, [session.status]);
 
   if (session.status === "loading") {
     return <p>Loading...</p>;
   }
-
-  if (session.status === "authenticated") {
-    router?.push("/dashboard");
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target[0].value;
@@ -55,7 +58,8 @@ const Login = ({ url }) => {
           className={styles.input}
         />
         <button className={styles.button}>Login</button>
-        {error && error}
+        {error && <p className={styles.error}>{error}</p>}
+        {success && <p className={styles.success}>{success}</p>}
       </form>
       <button
         onClick={() => {
@@ -65,18 +69,19 @@ const Login = ({ url }) => {
       >
         Login with Google
       </button>
-      <span className={styles.or}>- OR -</span>
-      <Link className={styles.link} href="/dashboard/register">
-        Create new account
-      </Link>
-      {/* <button
+      <button
         onClick={() => {
           signIn("github");
         }}
         className={styles.button + " " + styles.github}
       >
         Login with Github
-      </button> */}
+      </button>
+      <span className={styles.or}>- OR -</span>
+      <Link className={styles.link} href="/dashboard/register">
+        Create new account
+      </Link>
+      
     </div>
   );
 };
